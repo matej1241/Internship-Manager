@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//src/studentInternshipManager/LogInformation.java=UTF-8
+encoding//src/studentInternshipManager/SIMImpl.java=UTF-8
+encoding//src/studentInternshipManager/SIMImplService.java=UTF-8
+encoding//src/studentInternshipManager/SIMImplServiceLocator.java=UTF-8
+encoding//src/studentInternshipManager/SIMImplSoapBindingStub.java=UTF-8
+encoding//src/studentInternshipManager/UserInformation.java=UTF-8
+encoding//src/studentInternshipManager/UsersImpl.java=UTF-8
+encoding//src/studentInternshipManager/UsersImplService.java=UTF-8
+encoding//src/studentInternshipManager/UsersImplServiceLocator.java=UTF-8
+encoding//src/studentInternshipManager/UsersImplSoapBindingStub.java=UTF-8
+encoding//src/studentInternshipManagerExceptions/InvalidEmailException.java=UTF-8
+encoding//src/studentInternshipManagerExceptions/InvalidNameException.java=UTF-8
+encoding//src/studentInternshipManagerExceptions/InvalidPhoneNumberException.java=UTF-8
+encoding//src/studentInternshipManagerExceptions/Response.java=UTF-8

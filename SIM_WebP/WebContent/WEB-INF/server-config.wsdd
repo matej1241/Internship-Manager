@@ -1,0 +1,218 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\z003rzkm\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\SIM_WebP\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="SIMImpl" provider="java:RPC">
+  <ns3:operation name="createTextLog" qname="ns2:createTextLog" returnQName="createTextLogReturn" returnType="ns1:Response" soapAction="" xmlns:ns1="http://studentInternshipManagerExceptions" xmlns:ns2="http://studentInternshipManager" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns3:parameter name="text" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns3:parameter name="startTime" type="xsd:dateTime" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns3:parameter name="endTime" type="xsd:dateTime" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns3:operation>
+  <ns1:operation name="submitTextLog" qname="ns4:submitTextLog" returnQName="submitTextLogReturn" returnType="ns3:Response" soapAction="" xmlns:ns3="http://studentInternshipManagerExceptions" xmlns:ns4="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="logID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="unlockTextLog" qname="ns6:unlockTextLog" returnQName="unlockTextLogReturn" returnType="ns5:Response" soapAction="" xmlns:ns5="http://studentInternshipManagerExceptions" xmlns:ns6="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="logID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="editInfo" qname="ns8:editInfo" returnQName="editInfoReturn" returnType="ns7:Response" soapAction="" xmlns:ns7="http://studentInternshipManagerExceptions" xmlns:ns8="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="businessMobile" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="privateMobile" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="businessMail" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="privateMail" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="viewStudentLogs" qname="ns9:viewStudentLogs" returnQName="viewStudentLogsReturn" returnType="ns9:ArrayOfLogInformation" soapAction="" xmlns:ns9="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="disableStudent" qname="ns11:disableStudent" returnQName="disableStudentReturn" returnType="ns10:Response" soapAction="" xmlns:ns10="http://studentInternshipManagerExceptions" xmlns:ns11="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="enableStudent" qname="ns13:enableStudent" returnQName="enableStudentReturn" returnType="ns12:Response" soapAction="" xmlns:ns12="http://studentInternshipManagerExceptions" xmlns:ns13="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="commentStudent" qname="ns15:commentStudent" returnQName="commentStudentReturn" returnType="ns14:Response" soapAction="" xmlns:ns14="http://studentInternshipManagerExceptions" xmlns:ns15="http://studentInternshipManager">
+   <ns1:parameter name="studentID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="publicComment" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="internalComment" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="viewAssignedList" qname="ns16:viewAssignedList" returnQName="viewAssignedListReturn" returnType="ns16:ArrayOfUserInformation" soapAction="" xmlns:ns16="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="assignUser" qname="ns18:assignUser" returnQName="assignUserReturn" returnType="ns17:Response" soapAction="" xmlns:ns17="http://studentInternshipManagerExceptions" xmlns:ns18="http://studentInternshipManager">
+   <ns1:parameter name="mentorID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="studentID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="viewPersonalInfo" qname="ns19:viewPersonalInfo" returnQName="viewPersonalInfoReturn" returnType="xsd:anyType" soapAction="" xmlns:ns19="http://studentInternshipManager" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter name="userID" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="editTextLog" qname="ns20:editTextLog" returnQName="editTextLogReturn" returnType="xsd:anyType" soapAction="" xmlns:ns20="http://studentInternshipManager" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter name="userID" type="xsd:string"/>
+   <ns1:parameter name="logID" type="xsd:string"/>
+   <ns1:parameter name="text" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="createUser" qname="ns21:createUser" returnQName="createUserReturn" returnType="xsd:anyType" soapAction="" xmlns:ns21="http://studentInternshipManager" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter name="userID" type="xsd:string"/>
+   <ns1:parameter name="password" type="xsd:string"/>
+   <ns1:parameter name="name" type="xsd:string"/>
+   <ns1:parameter name="surname" type="xsd:string"/>
+   <ns1:parameter name="businessMobile" type="xsd:string"/>
+   <ns1:parameter name="privateMobile" type="xsd:string"/>
+   <ns1:parameter name="businessMail" type="xsd:string"/>
+   <ns1:parameter name="privateMail" type="xsd:string"/>
+   <ns1:parameter name="role" type="xsd:string"/>
+   <ns1:fault class="studentInternshipManagerExceptions.InvalidNameException" qname="ns21:fault" type="ns22:InvalidNameException" xmlns:ns22="http://studentInternshipManagerExceptions"/>
+   <ns1:fault class="studentInternshipManagerExceptions.InvalidPhoneNumberException" qname="ns21:fault" type="ns23:InvalidPhoneNumberException" xmlns:ns23="http://studentInternshipManagerExceptions"/>
+   <ns1:fault class="studentInternshipManagerExceptions.InvalidEmailException" qname="ns21:fault" type="ns24:InvalidEmailException" xmlns:ns24="http://studentInternshipManagerExceptions"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="editInfo enableStudent commentStudent unlockTextLog disableStudent viewPersonalInfo submitTextLog editTextLog assignUser createUser viewAssignedList createTextLog viewStudentLogs"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="SIMImpl"/>
+  <ns1:parameter name="className" value="studentInternshipManager.SIMImpl"/>
+  <ns1:parameter name="wsdlServicePort" value="SIMImpl"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://studentInternshipManager"/>
+  <ns1:parameter name="wsdlServiceElement" value="SIMImplService"/>
+  <ns1:parameter name="schemaUnqualified" value="http://studentInternshipManager,http://studentInternshipManagerExceptions"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns25:InvalidPhoneNumberException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManagerExceptions.InvalidPhoneNumberException" xmlns:ns25="http://studentInternshipManagerExceptions"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns26:UserInformation" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManager.UserInformation" xmlns:ns26="http://studentInternshipManager"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns27:InvalidEmailException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManagerExceptions.InvalidEmailException" xmlns:ns27="http://studentInternshipManagerExceptions"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns28:LogInformation" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManager.LogInformation" xmlns:ns28="http://studentInternshipManager"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns29:InvalidNameException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManagerExceptions.InvalidNameException" xmlns:ns29="http://studentInternshipManagerExceptions"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns30:Response" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManagerExceptions.Response" xmlns:ns30="http://studentInternshipManagerExceptions"/>
+  <ns1:arrayMapping innerType="ns31:LogInformation" languageSpecificType="java:studentInternshipManager.LogInformation[]" qname="ns31:ArrayOfLogInformation" xmlns:ns31="http://studentInternshipManager"/>
+  <ns1:arrayMapping innerType="ns32:UserInformation" languageSpecificType="java:studentInternshipManager.UserInformation[]" qname="ns32:ArrayOfUserInformation" xmlns:ns32="http://studentInternshipManager"/>
+  <ns1:arrayMapping innerType="xsd:anyType" languageSpecificType="java:java.lang.Object[]" qname="ns33:ArrayOf_xsd_anyType" xmlns:ns33="http://studentInternshipManager" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="UsersImpl" provider="java:RPC">
+  <ns1:operation name="createTextLog" qname="ns35:createTextLog" returnQName="createTextLogReturn" returnType="ns34:Response" soapAction="" xmlns:ns34="http://studentInternshipManagerExceptions" xmlns:ns35="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="text" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="startTime" type="xsd:dateTime" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="endTime" type="xsd:dateTime" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="submitTextLog" qname="ns37:submitTextLog" returnQName="submitTextLogReturn" returnType="ns36:Response" soapAction="" xmlns:ns36="http://studentInternshipManagerExceptions" xmlns:ns37="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="logID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="unlockTextLog" qname="ns39:unlockTextLog" returnQName="unlockTextLogReturn" returnType="ns38:Response" soapAction="" xmlns:ns38="http://studentInternshipManagerExceptions" xmlns:ns39="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="logID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="editInfo" qname="ns41:editInfo" returnQName="editInfoReturn" returnType="ns40:Response" soapAction="" xmlns:ns40="http://studentInternshipManagerExceptions" xmlns:ns41="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="businessMobile" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="privateMobile" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="businessMail" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="privateMail" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="viewStudentLogs" qname="ns42:viewStudentLogs" returnQName="viewStudentLogsReturn" returnType="ns42:ArrayOfLogInformation" soapAction="" xmlns:ns42="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="disableStudent" qname="ns44:disableStudent" returnQName="disableStudentReturn" returnType="ns43:Response" soapAction="" xmlns:ns43="http://studentInternshipManagerExceptions" xmlns:ns44="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="enableStudent" qname="ns46:enableStudent" returnQName="enableStudentReturn" returnType="ns45:Response" soapAction="" xmlns:ns45="http://studentInternshipManagerExceptions" xmlns:ns46="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="commentStudent" qname="ns48:commentStudent" returnQName="commentStudentReturn" returnType="ns47:Response" soapAction="" xmlns:ns47="http://studentInternshipManagerExceptions" xmlns:ns48="http://studentInternshipManager">
+   <ns1:parameter name="studentID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="publicComment" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="internalComment" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="viewAssignedList" qname="ns49:viewAssignedList" returnQName="viewAssignedListReturn" returnType="ns49:ArrayOfUserInformation" soapAction="" xmlns:ns49="http://studentInternshipManager">
+   <ns1:parameter name="userID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="assignUser" qname="ns51:assignUser" returnQName="assignUserReturn" returnType="ns50:Response" soapAction="" xmlns:ns50="http://studentInternshipManagerExceptions" xmlns:ns51="http://studentInternshipManager">
+   <ns1:parameter name="mentorID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter name="studentID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="viewPersonalInfo" qname="ns52:viewPersonalInfo" returnQName="viewPersonalInfoReturn" returnType="xsd:anyType" soapAction="" xmlns:ns52="http://studentInternshipManager" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter name="userID" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="editTextLog" qname="ns53:editTextLog" returnQName="editTextLogReturn" returnType="xsd:anyType" soapAction="" xmlns:ns53="http://studentInternshipManager" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter name="userID" type="xsd:string"/>
+   <ns1:parameter name="logID" type="xsd:string"/>
+   <ns1:parameter name="text" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="createUser" qname="ns54:createUser" returnQName="createUserReturn" returnType="xsd:anyType" soapAction="" xmlns:ns54="http://studentInternshipManager" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter name="userID" type="xsd:string"/>
+   <ns1:parameter name="password" type="xsd:string"/>
+   <ns1:parameter name="name" type="xsd:string"/>
+   <ns1:parameter name="surname" type="xsd:string"/>
+   <ns1:parameter name="businessMobile" type="xsd:string"/>
+   <ns1:parameter name="privateMobile" type="xsd:string"/>
+   <ns1:parameter name="businessMail" type="xsd:string"/>
+   <ns1:parameter name="privateMail" type="xsd:string"/>
+   <ns1:parameter name="role" type="xsd:string"/>
+   <ns1:fault class="studentInternshipManagerExceptions.InvalidNameException" qname="ns54:fault" type="ns55:InvalidNameException" xmlns:ns55="http://studentInternshipManagerExceptions"/>
+   <ns1:fault class="studentInternshipManagerExceptions.InvalidPhoneNumberException" qname="ns54:fault" type="ns56:InvalidPhoneNumberException" xmlns:ns56="http://studentInternshipManagerExceptions"/>
+   <ns1:fault class="studentInternshipManagerExceptions.InvalidEmailException" qname="ns54:fault" type="ns57:InvalidEmailException" xmlns:ns57="http://studentInternshipManagerExceptions"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="editInfo enableStudent commentStudent unlockTextLog disableStudent viewPersonalInfo submitTextLog editTextLog assignUser createUser viewAssignedList createTextLog viewStudentLogs"/>
+  <ns1:parameter name="wsdlPortType" value="UsersImpl"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlServicePort" value="UsersImpl"/>
+  <ns1:parameter name="className" value="studentInternshipManager.UsersImpl"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://studentInternshipManager"/>
+  <ns1:parameter name="wsdlServiceElement" value="UsersImplService"/>
+  <ns1:parameter name="schemaUnqualified" value="http://studentInternshipManager,http://studentInternshipManagerExceptions"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns58:InvalidPhoneNumberException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManagerExceptions.InvalidPhoneNumberException" xmlns:ns58="http://studentInternshipManagerExceptions"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns59:UserInformation" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManager.UserInformation" xmlns:ns59="http://studentInternshipManager"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns60:InvalidEmailException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManagerExceptions.InvalidEmailException" xmlns:ns60="http://studentInternshipManagerExceptions"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns61:LogInformation" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManager.LogInformation" xmlns:ns61="http://studentInternshipManager"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns62:InvalidNameException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManagerExceptions.InvalidNameException" xmlns:ns62="http://studentInternshipManagerExceptions"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns63:Response" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:studentInternshipManagerExceptions.Response" xmlns:ns63="http://studentInternshipManagerExceptions"/>
+  <ns1:arrayMapping innerType="ns64:LogInformation" languageSpecificType="java:studentInternshipManager.LogInformation[]" qname="ns64:ArrayOfLogInformation" xmlns:ns64="http://studentInternshipManager"/>
+  <ns1:arrayMapping innerType="ns65:UserInformation" languageSpecificType="java:studentInternshipManager.UserInformation[]" qname="ns65:ArrayOfUserInformation" xmlns:ns65="http://studentInternshipManager"/>
+  <ns1:arrayMapping innerType="xsd:anyType" languageSpecificType="java:java.lang.Object[]" qname="ns66:ArrayOf_xsd_anyType" xmlns:ns66="http://studentInternshipManager" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

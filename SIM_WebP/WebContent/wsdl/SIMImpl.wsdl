@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://studentInternshipManager" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://studentInternshipManager" xmlns:intf="http://studentInternshipManager" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://studentInternshipManagerExceptions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://studentInternshipManager" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://studentInternshipManagerExceptions"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_xsd_anyType">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:anyType[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="LogInformation">
+    <sequence>
+     <element name="date" nillable="true" type="xsd:string"/>
+     <element name="endTime" nillable="true" type="xsd:string"/>
+     <element name="logID" nillable="true" type="xsd:string"/>
+     <element name="logStatus" nillable="true" type="xsd:string"/>
+     <element name="owner" nillable="true" type="xsd:string"/>
+     <element name="startTime" nillable="true" type="xsd:string"/>
+     <element name="text" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfLogInformation">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="impl:LogInformation[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="UserInformation">
+    <sequence>
+     <element name="businessMail" nillable="true" type="xsd:string"/>
+     <element name="businessMobile" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="privateMail" nillable="true" type="xsd:string"/>
+     <element name="privateMobile" nillable="true" type="xsd:string"/>
+     <element name="role" nillable="true" type="xsd:string"/>
+     <element name="surname" nillable="true" type="xsd:string"/>
+     <element name="userID" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfUserInformation">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="impl:UserInformation[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://studentInternshipManagerExceptions" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://studentInternshipManager"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Response">
+    <sequence>
+     <element name="args" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+     <element name="code" type="xsd:int"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="InvalidNameException">
+    <sequence>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="cause" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="InvalidEmailException">
+    <sequence>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="cause" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="InvalidPhoneNumberException">
+    <sequence>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="cause" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="viewStudentLogsRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewStudentLogsResponse">
+
+      <wsdl:part name="viewStudentLogsReturn" type="impl:ArrayOfLogInformation">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editInfoResponse">
+
+      <wsdl:part name="editInfoReturn" type="tns1:Response">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editInfoRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="businessMobile" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="privateMobile" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="businessMail" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="privateMail" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editTextLogResponse">
+
+      <wsdl:part name="editTextLogReturn" type="xsd:anyType">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewPersonalInfoResponse">
+
+      <wsdl:part name="viewPersonalInfoReturn" type="xsd:anyType">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewAssignedListResponse">
+
+      <wsdl:part name="viewAssignedListReturn" type="impl:ArrayOfUserInformation">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="unlockTextLogResponse">
+
+      <wsdl:part name="unlockTextLogReturn" type="tns1:Response">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="unlockTextLogRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="logID" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createTextLogResponse">
+
+      <wsdl:part name="createTextLogReturn" type="tns1:Response">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createUserResponse">
+
+      <wsdl:part name="createUserReturn" type="xsd:anyType">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="assignUserRequest">
+
+      <wsdl:part name="mentorID" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="studentID" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="commentStudentResponse">
+
+      <wsdl:part name="commentStudentReturn" type="tns1:Response">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="assignUserResponse">
+
+      <wsdl:part name="assignUserReturn" type="tns1:Response">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="InvalidEmailException">
+
+      <wsdl:part name="fault" type="tns1:InvalidEmailException">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="enableStudentResponse">
+
+      <wsdl:part name="enableStudentReturn" type="tns1:Response">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="InvalidNameException">
+
+      <wsdl:part name="fault" type="tns1:InvalidNameException">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createTextLogRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="text" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="startTime" type="xsd:dateTime">
+
+      </wsdl:part>
+
+      <wsdl:part name="endTime" type="xsd:dateTime">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="submitTextLogResponse">
+
+      <wsdl:part name="submitTextLogReturn" type="tns1:Response">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewAssignedListRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="commentStudentRequest">
+
+      <wsdl:part name="studentID" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="publicComment" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="internalComment" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="disableStudentRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewPersonalInfoRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="enableStudentRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editTextLogRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="logID" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="text" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="disableStudentResponse">
+
+      <wsdl:part name="disableStudentReturn" type="tns1:Response">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="submitTextLogRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="logID" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="InvalidPhoneNumberException">
+
+      <wsdl:part name="fault" type="tns1:InvalidPhoneNumberException">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createUserRequest">
+
+      <wsdl:part name="userID" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="password" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="name" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="surname" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="businessMobile" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="privateMobile" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="businessMail" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="privateMail" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="role" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SIMImpl">
+
+      <wsdl:operation name="createTextLog" parameterOrder="userID text startTime endTime">
+
+         <wsdl:input message="impl:createTextLogRequest" name="createTextLogRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createTextLogResponse" name="createTextLogResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="submitTextLog" parameterOrder="userID logID">
+
+         <wsdl:input message="impl:submitTextLogRequest" name="submitTextLogRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:submitTextLogResponse" name="submitTextLogResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="unlockTextLog" parameterOrder="userID logID">
+
+         <wsdl:input message="impl:unlockTextLogRequest" name="unlockTextLogRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:unlockTextLogResponse" name="unlockTextLogResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editInfo" parameterOrder="userID businessMobile privateMobile businessMail privateMail">
+
+         <wsdl:input message="impl:editInfoRequest" name="editInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:editInfoResponse" name="editInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewStudentLogs" parameterOrder="userID">
+
+         <wsdl:input message="impl:viewStudentLogsRequest" name="viewStudentLogsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:viewStudentLogsResponse" name="viewStudentLogsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="disableStudent" parameterOrder="userID">
+
+         <wsdl:input message="impl:disableStudentRequest" name="disableStudentRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:disableStudentResponse" name="disableStudentResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="enableStudent" parameterOrder="userID">
+
+         <wsdl:input message="impl:enableStudentRequest" name="enableStudentRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:enableStudentResponse" name="enableStudentResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="commentStudent" parameterOrder="studentID publicComment internalComment">
+
+         <wsdl:input message="impl:commentStudentRequest" name="commentStudentRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:commentStudentResponse" name="commentStudentResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewAssignedList" parameterOrder="userID">
+
+         <wsdl:input message="impl:viewAssignedListRequest" name="viewAssignedListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:viewAssignedListResponse" name="viewAssignedListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="assignUser" parameterOrder="mentorID studentID">
+
+         <wsdl:input message="impl:assignUserRequest" name="assignUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:assignUserResponse" name="assignUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewPersonalInfo" parameterOrder="userID">
+
+         <wsdl:input message="impl:viewPersonalInfoRequest" name="viewPersonalInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:viewPersonalInfoResponse" name="viewPersonalInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editTextLog" parameterOrder="userID logID text">
+
+         <wsdl:input message="impl:editTextLogRequest" name="editTextLogRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:editTextLogResponse" name="editTextLogResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createUser" parameterOrder="userID password name surname businessMobile privateMobile businessMail privateMail role">
+
+         <wsdl:input message="impl:createUserRequest" name="createUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createUserResponse" name="createUserResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:InvalidNameException" name="InvalidNameException">
+
+       </wsdl:fault>
+
+         <wsdl:fault message="impl:InvalidPhoneNumberException" name="InvalidPhoneNumberException">
+
+       </wsdl:fault>
+
+         <wsdl:fault message="impl:InvalidEmailException" name="InvalidEmailException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SIMImplSoapBinding" type="impl:SIMImpl">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createTextLog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createTextLogRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createTextLogResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="submitTextLog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="submitTextLogRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="submitTextLogResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="unlockTextLog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="unlockTextLogRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="unlockTextLogResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="editInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="editInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewStudentLogs">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewStudentLogsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewStudentLogsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="disableStudent">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="disableStudentRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="disableStudentResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="enableStudent">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="enableStudentRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="enableStudentResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="commentStudent">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="commentStudentRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="commentStudentResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewAssignedList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewAssignedListRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewAssignedListResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="assignUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="assignUserRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="assignUserResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewPersonalInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewPersonalInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewPersonalInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editTextLog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="editTextLogRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="editTextLogResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createUserRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createUserResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="InvalidNameException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="InvalidNameException" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="InvalidPhoneNumberException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="InvalidPhoneNumberException" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="InvalidEmailException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="InvalidEmailException" namespace="http://studentInternshipManager" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SIMImplService">
+
+      <wsdl:port binding="impl:SIMImplSoapBinding" name="SIMImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/SIM_WebP/services/SIMImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

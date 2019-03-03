@@ -1,0 +1,159 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SIMImplService WSDL service -->
+
+  <service name="SIMImpl" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://studentInternshipManager"/>
+      <parameter name="wsdlServiceElement" value="SIMImplService"/>
+      <parameter name="schemaUnqualified" value="http://studentInternshipManager,http://studentInternshipManagerExceptions"/>
+      <parameter name="wsdlServicePort" value="SIMImpl"/>
+      <parameter name="className" value="studentInternshipManager.SIMImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="SIMImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="createTextLog" qname="operNS:createTextLog" xmlns:operNS="http://studentInternshipManager" returnQName="createTextLogReturn" returnType="rtns:Response" xmlns:rtns="http://studentInternshipManagerExceptions" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="text" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="startTime" type="tns:dateTime" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="endTime" type="tns:dateTime" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="submitTextLog" qname="operNS:submitTextLog" xmlns:operNS="http://studentInternshipManager" returnQName="submitTextLogReturn" returnType="rtns:Response" xmlns:rtns="http://studentInternshipManagerExceptions" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="logID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="unlockTextLog" qname="operNS:unlockTextLog" xmlns:operNS="http://studentInternshipManager" returnQName="unlockTextLogReturn" returnType="rtns:Response" xmlns:rtns="http://studentInternshipManagerExceptions" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="logID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="editInfo" qname="operNS:editInfo" xmlns:operNS="http://studentInternshipManager" returnQName="editInfoReturn" returnType="rtns:Response" xmlns:rtns="http://studentInternshipManagerExceptions" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="businessMobile" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="privateMobile" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="businessMail" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="privateMail" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="viewStudentLogs" qname="operNS:viewStudentLogs" xmlns:operNS="http://studentInternshipManager" returnQName="viewStudentLogsReturn" returnType="rtns:ArrayOfLogInformation" xmlns:rtns="http://studentInternshipManager" returnItemType="tns2:LogInformation" xmlns:tns2="http://studentInternshipManager" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="disableStudent" qname="operNS:disableStudent" xmlns:operNS="http://studentInternshipManager" returnQName="disableStudentReturn" returnType="rtns:Response" xmlns:rtns="http://studentInternshipManagerExceptions" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="enableStudent" qname="operNS:enableStudent" xmlns:operNS="http://studentInternshipManager" returnQName="enableStudentReturn" returnType="rtns:Response" xmlns:rtns="http://studentInternshipManagerExceptions" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="commentStudent" qname="operNS:commentStudent" xmlns:operNS="http://studentInternshipManager" returnQName="commentStudentReturn" returnType="rtns:Response" xmlns:rtns="http://studentInternshipManagerExceptions" soapAction="" >
+        <parameter qname="studentID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="publicComment" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="internalComment" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="viewAssignedList" qname="operNS:viewAssignedList" xmlns:operNS="http://studentInternshipManager" returnQName="viewAssignedListReturn" returnType="rtns:ArrayOfUserInformation" xmlns:rtns="http://studentInternshipManager" returnItemType="tns2:UserInformation" xmlns:tns2="http://studentInternshipManager" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="assignUser" qname="operNS:assignUser" xmlns:operNS="http://studentInternshipManager" returnQName="assignUserReturn" returnType="rtns:Response" xmlns:rtns="http://studentInternshipManagerExceptions" soapAction="" >
+        <parameter qname="mentorID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="studentID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="viewPersonalInfo" qname="operNS:viewPersonalInfo" xmlns:operNS="http://studentInternshipManager" returnQName="viewPersonalInfoReturn" returnType="rtns:anyType" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="editTextLog" qname="operNS:editTextLog" xmlns:operNS="http://studentInternshipManager" returnQName="editTextLogReturn" returnType="rtns:anyType" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="logID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="text" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="createUser" qname="operNS:createUser" xmlns:operNS="http://studentInternshipManager" returnQName="createUserReturn" returnType="rtns:anyType" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="userID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="name" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="surname" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="businessMobile" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="privateMobile" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="businessMail" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="privateMail" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="role" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <fault name="InvalidNameException" qname="fns:fault" xmlns:fns="http://studentInternshipManager" class="studentInternshipManagerExceptions.InvalidNameException" type="tns:InvalidNameException" xmlns:tns="http://studentInternshipManagerExceptions"/>
+        <fault name="InvalidPhoneNumberException" qname="fns:fault" xmlns:fns="http://studentInternshipManager" class="studentInternshipManagerExceptions.InvalidPhoneNumberException" type="tns:InvalidPhoneNumberException" xmlns:tns="http://studentInternshipManagerExceptions"/>
+        <fault name="InvalidEmailException" qname="fns:fault" xmlns:fns="http://studentInternshipManager" class="studentInternshipManagerExceptions.InvalidEmailException" type="tns:InvalidEmailException" xmlns:tns="http://studentInternshipManagerExceptions"/>
+      </operation>
+      <parameter name="allowedMethods" value="editInfo enableStudent commentStudent unlockTextLog disableStudent viewPersonalInfo submitTextLog editTextLog assignUser createUser viewAssignedList createTextLog viewStudentLogs"/>
+
+      <arrayMapping
+        xmlns:ns="http://studentInternshipManager"
+        qname="ns:ArrayOfLogInformation"
+        type="java:studentInternshipManager.LogInformation[]"
+        innerType="cmp-ns:LogInformation" xmlns:cmp-ns="http://studentInternshipManager"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://studentInternshipManagerExceptions"
+        qname="ns:InvalidPhoneNumberException"
+        type="java:studentInternshipManagerExceptions.InvalidPhoneNumberException"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://studentInternshipManager"
+        qname="ns:UserInformation"
+        type="java:studentInternshipManager.UserInformation"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <arrayMapping
+        xmlns:ns="http://studentInternshipManager"
+        qname="ns:ArrayOfUserInformation"
+        type="java:studentInternshipManager.UserInformation[]"
+        innerType="cmp-ns:UserInformation" xmlns:cmp-ns="http://studentInternshipManager"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://studentInternshipManagerExceptions"
+        qname="ns:InvalidEmailException"
+        type="java:studentInternshipManagerExceptions.InvalidEmailException"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://studentInternshipManager"
+        qname="ns:LogInformation"
+        type="java:studentInternshipManager.LogInformation"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <arrayMapping
+        xmlns:ns="http://studentInternshipManager"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://studentInternshipManagerExceptions"
+        qname="ns:InvalidNameException"
+        type="java:studentInternshipManagerExceptions.InvalidNameException"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://studentInternshipManagerExceptions"
+        qname="ns:Response"
+        type="java:studentInternshipManagerExceptions.Response"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+  </service>
+</deployment>
